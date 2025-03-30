@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="module" src="preloadAuth.js"></script>
+    <link rel="stylesheet" href="./main.css"/>
+</head>
+<body>
+    <div class="mainContainer">
+
+        <header>
+            <h1 id="charName">ValunteerHub</h1>
+            <div class="nav">
+                <h3><a href="#" id="homePage">Home</a></h3>
+                <h3><a href="#" id="dashBoard">DashBoard</a></h3>
+                <h3><a href="#" id="logout">LogOut</a></h3>
+            </div>
+        
+        </header>
+        
+    
+        <div class="container" id="content">
+
+            <section class="search-container" id="search">
+                <h2 class="section-title">Find Volunteer Opportunities</h2>
+                <form class="search-form" id="search-form">
+                    <div class="form-group">
+                        <label for="location">Location
+                        <input type="text" id="location" placeholder="City or ZIP code" value="" required>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Category
+                        <select id="category">
+                            <option value="">All Categories</option>
+                            <option value="animals">Animals</option>
+                            <option value="education">Education</option>
+                            <option value="environment">Environment</option>
+                            <option value="health">Health</option>
+                            <option value="homelessness">Homelessness</option>
+                            <option value="seniors">Seniors</option>
+                        </select>
+                    </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Date
+                        <input type="date" id="date" required>
+                    </label>
+                    </div>
+                    <!-- <div class="form-group">
+                        <label for="skills">Skills
+                        <input type="text" id="skills" placeholder="Teaching, Cooking, etc.">
+                    </label>
+                    </div> -->
+                    <div class="form-group">
+                        <button type="submit" id="searchBtn" style="align-self: flex-end;">Search</button>
+                    </div>
+                </form>
+            </section>
+    
+            <section>
+                <h2 class="section-title">Available Opportunities</h2>
+                <div class="opportunities" id="opportunities-list">
+                   
+                </div>
+            </section>
+
+
+        </div>
+        <div class="popup" id="oppPopup">
+            <div class="popup-content" id="popupContent">
+
+
+            </div>
+        </div>
+
+        <div class="container" id="dashBoardPage">
+            <div class="dashboard">
+                <div class="sidebar">
+                    <ul class="sidebar-menu">
+                        <li><a href="#" class="active" data-tab="overview">Overview</a></li>
+                        <li><a href="#" data-tab="hours-tracker">Hours Tracker</a></li>
+                        <li><a href="#" data-tab="upcoming-events">Upcoming Events</a></li>
+                        <li><a href="#" data-tab="impact-reports">Impact Reports</a></li>
+                        <li><a href="#" data-tab="saved-opportunities">Saved Opportunities</a></li>
+                    </ul>
+
+                </div>
+                <div class="main-content">
+                    <div class="tab-content active" id="overview">
+                        <p>overview</p>
+                    </div>
+                    <div class="tab-content" id="hours-tracker">
+                        <p>Hours Tracker</p>
+                    </div>
+                    <div class="tab-content" id="upcoming-events">
+                        <p>Upcoming Events</p>
+                    </div>
+                    <div class="tab-content" id="impact-reports">
+                        <p>Impact Reports</p>
+                    </div>
+                    <div class="tab-content" id="saved-opportunities">
+                        <p>Saved Opportunities</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    
+        <footer>
+                <hr>
+                <p id="currentTime"></p>
+        </footer>
+
+    </div>
+
+    <script src="./mainScript.js"></script>
+    
+
+    <!-- <h2>${o.title}</h2>
+    <h3>Organization: ${o.organization}</h3>
+    <h4>date: ${o.date}</h4>
+    <h4>Time: ${o.time}</h4>
+    <h4>Location: ${o.location}</h4>
+    <h4>Skills needed: ${o.skills}</h4>
+    <h4>Description</h4>
+    <p>${o.description}</p> -->
+
+    <!-- <h3>Welcome Back, here's your volunteering overview:</h3>
+    <hr>
+    <h4>Total Hours: ${thours}</h4>
+    <br>
+    <h4>Upcoming Events: ${upEvents}</h4>
+    <br>
+    <h4>Number of organization you've worked with: ${noOrg}</h4>
+    <br>
+    <h4>Saved Events: ${saved}</h4> -->
+    
+    
+</body>
+</html>

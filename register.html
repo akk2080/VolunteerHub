@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0px;
+        }
+        .container{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .registerArea{
+            text-align: center;
+            width: 400px;
+            height: fit-content;
+            border-radius: 5px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+            padding-bottom: 2rem;
+        }
+        input{
+            width: 90%;
+            margin-top: 1rem;
+        }
+        button{
+            margin-top: 1rem;
+            width: 90%;
+        }
+    </style>
+</head>
+<body>
+    <!-- <header>
+        <h2>Registration Page</h2>
+    </header>
+    <hr>
+
+    <div class="inputArea">
+        <input type="email" id="email" placeholder="Enter Email">
+        <input type="password" id="password" placeholder="Enter password">
+        <button id="register">Register</button>
+        <hr>
+        <p>Already registered?... Please click the below button to go to the login page</p>
+        <button id="login">Login</button>
+    </div> -->
+    <div class="container">
+        <div class="registerArea">
+            <h2>Sign Up</h2>
+            <input type="text" id="name" placeholder="Enter full name">
+            <input type="email" id="email" placeholder="Enter email">
+            <input type="password" id="password" placeholder="Enter password">
+            <button id="register">Register</button>
+            <p>Already registered?... please login from <a href="login.html">here</a></p>
+        </div>
+    </div>
+    
+
+    <script type="module">
+        import {auth} from "./FireBaseAuthConfig.js";
+        import {createUserWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+        
+        document.addEventListener('DOMContentLoaded', ()=>{
+            const email = document.getElementById('email');
+            const pass = document.getElementById('password');
+            const name = document.getElementById('name');
+            document.getElementById('register').addEventListener('click', ()=>{
+
+                createUserWithEmailAndPassword(auth, email.value, pass.value)
+                .then((userCredentials) => {
+                    const user = userCredentials.user;
+                    if(user){
+                        storeUser();
+                    }
+                        
+                }).catch(error => {
+                    alert(error.message);
+                    console.log(error);
+                });
+
+            });
+
+
+
+            function storeUser(){
+                let newUser = {
+                    name: name.value,
+                    email: email.value
+                };
+
+                console.log(newUser);
+
+                fetch('https://volunteerhub-8f811-default-rtdb.firebaseio.com/users.json', {
+                    method: 'POST',
+                    headers: {
+                        'contentType':'application/json'
+                    },
+                    body: JSON.stringify(newUser)
+                }).then(res => {
+                    if(!res.ok){
+                        console.log(res.status);
+                        throw new Error('SOmethking went wrong, ' + res.status);
+                        
+                    }else{
+                        window.location.replace('login.html');
+                    }
+                }).catch(e =>{
+                    console.log(e.message);
+                    alert(e.message);
+                });
+
+
+            }
+
+            // document.getElementById('login').addEventListener('click', ()=>{
+            //     window.location.replace('login.html');
+            // });
+        });
+
+        
+    </script>
+       
+   
+    
+    
+</body>
+</html>
