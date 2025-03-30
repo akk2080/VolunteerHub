@@ -7,12 +7,12 @@ function setCurrUser(){
     currUser = localStorage.getItem('userId') || '';
 
     if(currUser == '')
-        window.location.replace('login.html');
+        window.location.replace('index.html');
 
     onAuthStateChanged(auth, (user) => {
         if (!user) {
   
-            window.location.replace('login.html');
+            window.location.replace('index.html');
         }
     });
 
@@ -29,7 +29,7 @@ const logout = document.getElementById('logout');
             localStorage.setItem('userId', '');
             
         }).then(()=>{
-            window.location.replace('login.html');
+            window.location.replace('index.html');
         }).catch(e => {
             alert(e.message);
         });

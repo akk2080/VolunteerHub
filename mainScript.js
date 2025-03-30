@@ -20,7 +20,7 @@ async function setCurrUser(){
     currUser = localStorage.getItem('userId') || '';
 
     if(currUser == '')
-        window.location.replace('login.html');
+        window.location.replace('index.html');
 
     await getUserData();
 
@@ -112,18 +112,18 @@ function setupEventListner(){
         });
     });
 
-    const logout = document.getElementById('logout');
-    logout.addEventListener('click', (e)=>{
-        e.preventDefault();
-        signOut(auth).then(()=>{
-            localStorage.setItem('userId', '');
+    // const logout = document.getElementById('logout');
+    // logout.addEventListener('click', (e)=>{
+    //     e.preventDefault();
+    //     signOut(auth).then(()=>{
+    //         localStorage.setItem('userId', '');
             
-        }).then(()=>{
-            window.location.replace('login.html');
-        }).catch(e => {
-            alert(e.message);
-        });
-    });
+    //     }).then(()=>{
+    //         window.location.replace('index.html');
+    //     }).catch(e => {
+    //         alert(e.message);
+    //     });
+    // });
 };
 
 async function displayOpp(){
